@@ -1,0 +1,1617 @@
+# SePay Documentation
+
+> **llms.txt** - A comprehensive documentation file for LLMs to understand SePay's platform, services, and integrations.
+>
+> Source: https://docs.sepay.vn/
+>
+> Last Updated: 2025-10-15
+
+---
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Service Packages](#service-packages)
+3. [Getting Started](#getting-started)
+4. [Company Configuration](#company-configuration)
+5. [Notification Integrations](#notification-integrations)
+6. [E-commerce & Web Integrations](#e-commerce--web-integrations)
+7. [Programming & Integration](#programming--integration)
+8. [API Documentation](#api-documentation)
+9. [Support & Contact](#support--contact)
+
+---
+
+## Introduction
+
+### What is SePay?
+
+SePay is a digital payment tool that helps businesses automate bank transfer payment verification and tracking in Vietnam. It enables businesses to share bank account balance changes and automatically verify payments when customers make bank transfers.
+
+**Key Features:**
+
+- **Automatic Payment Verification**: Automatically verifies payments for sales applications when customers transfer funds
+- **Real-time Notifications**: Send transaction details to platforms like Telegram, Lark, Viber, and mobile apps
+- **WebHooks & API Integration**: Integrate with sales applications to automatically update order statuses
+- **Fast Processing**: Processes transactions within 5-10 seconds
+- **High Volume**: Handles tens of thousands of transactions daily
+
+**Use Case Example:**
+
+When a customer scans a QR code and transfers money:
+1. SePay receives the bank transaction notification
+2. Sends webhook notifications to your sales application
+3. Verifies transaction amount and content
+4. Automatically updates order payment status
+
+**Benefits:**
+
+- Eliminates manual transaction checking
+- Reduces payment processing time
+- Provides a convenient alternative to traditional payment gateways
+- Secure verification without sharing bank login credentials
+
+---
+
+## Service Packages
+
+### Package Structure
+
+SePay offers flexible service packages with no feature limitations, only transaction limits per month.
+
+**Package Details:**
+
+- Monthly transaction limit based on package tier
+- Transaction count = Incoming + Outgoing transactions per month
+- Overage charges apply for exceeding monthly limits
+- Formula: `Price per transaction × Number of excess transactions`
+
+**Package Information Available:**
+
+- Package name
+- Monthly transaction limit
+- Used transactions for current month
+- Service status
+- Start and expiration dates
+- Renewal cost
+
+### Service Package by Sales Point
+
+**Features:**
+
+- Flexible management of cash flow for each sales point
+- Multiple alert channels for balance changes
+- No transaction or revenue limits
+- Ability to add/remove stores as needed
+
+**Benefits:**
+
+- **Flexible Management**: Track and control cash flow for each sales point
+- Diverse notification methods
+- Comprehensive security and permission controls
+- Unlimited transaction capabilities
+- Multiple money source flexibility
+
+**Security Highlights:**
+
+- Verify money flow without sharing bank account details
+- Detailed permission settings per store and employee
+- Protection against invoice fraud
+
+### Changing Packages
+
+**Process:**
+
+1. Go to "Company" → "Service Packages"
+2. Click "Change Package" button
+3. Select new package and payment cycle
+4. Review order details
+5. Pay via QR code bank transfer
+6. Confirm new package details
+
+---
+
+## Getting Started
+
+### Registration
+
+**Steps to Register:**
+
+1. Visit https://my.sepay.vn/register
+2. Fill in all registration information
+3. Select a service plan based on monthly transaction volume
+4. Complete payment process
+
+**Payment Process:**
+
+1. Open your banking app
+2. Scan the provided QR code
+3. Maintain the transfer content for automatic transaction confirmation
+4. Receive "Payment successful!" notification
+
+**After Registration:**
+
+- Add bank accounts (detailed instructions available)
+- Configure notification channels
+- Set up webhooks or API integration
+
+### Adding Bank Accounts
+
+SePay supports two methods for connecting bank accounts:
+
+#### Method 1: Bank Connection via API
+
+**Features:**
+
+- Direct API partnerships with 8 banks
+- Transactions are pushed instantly
+- Ideal for low-latency payment verification
+- Supports both personal and business accounts
+
+**Supported Banks (API Connection):**
+
+- VPBank
+- BIDV
+- TPBank
+- ACB
+- MBBank
+- VietinBank
+- And others
+
+#### Method 2: SMS Balance Notification
+
+**Features:**
+
+- Simple and easy setup
+- SePay provides a dedicated phone number
+- Works with all banks
+
+**Setup Steps:**
+
+1. Access bank account menu in SePay
+2. Select "+ Connect Account"
+3. Choose "SMS Balance Notification"
+4. Enter bank details
+5. Register SePay's phone number with your bank for SMS notifications
+
+**Safety Notes:**
+
+- No Internet Banking login credentials required
+- Dedicated phone number for each user
+- SMS for balance notifications is different from OTP SMS
+- Banks allow multiple phone number registrations
+
+### Viewing Transactions
+
+**Accessing Transactions:**
+
+- Navigate to the [Transactions] menu on SePay
+- View transactions from multiple banks in one centralized location
+
+**Transaction Information Displayed:**
+
+- Transaction ID
+- Account number
+- Amount (incoming/outgoing)
+- Cumulative balance
+- Timestamp
+- Transaction details/content
+- Automatic actions (webhooks, Telegram notifications)
+- Reference code
+
+**Key Advantages:**
+
+- View transactions from multiple banks simultaneously
+- Create accounts with granular permissions
+- Avoid frequent logouts common with bank internet banking
+- Track associated Telegram messages and webhooks per transaction
+- Filtering and search capabilities
+- Hover over account numbers for detailed information
+
+### User Management & Permissions
+
+SePay offers three user role levels:
+
+#### 1. Normal User
+
+- Limited permissions
+- Suitable for sales staff, accountants, technical integration staff
+
+#### 2. Admin
+
+- Full access to company resources
+- Cannot modify Super Admin accounts
+- Suitable for department heads and project leaders
+
+#### 3. Super Admin
+
+- Complete system permissions
+- Created during initial SePay registration
+- Full control over all resources
+
+**Adding Users:**
+
+- Only Admin and Super Admin can add users
+- Required fields: First name, Last name, Email, Password
+- Select user role during creation
+
+**Permission Configuration:**
+
+**1. Feature Permissions:**
+
+Control access to view, add, edit, delete data including:
+- Transactions
+- Banks
+- Webhooks
+- Telegram notifications
+- Reports
+
+**2. Transaction Viewing Permissions:**
+
+Restrict view access with options to hide:
+- Account balance
+- Outgoing transactions
+- Payment content
+- Reference codes
+- Specific bank accounts
+- Specific sub-accounts (useful for multi-branch companies)
+
+**Recommendation:** Carefully consider permission levels to maintain data security.
+
+### Sub-Accounts (Virtual Accounts)
+
+**Definition:**
+
+Sub-accounts are virtual bank accounts linked to a main bank account, helping to distinguish revenue and cash flow for each branch.
+
+**Key Features:**
+
+- Track revenue from multiple branches using a single bank account
+- Incoming transfers go to the main account
+- Sub-accounts can only receive money (not distinguish outgoing transfers)
+- Can be configured for Telegram notifications and user permissions
+
+**Two Types of Sub-Accounts:**
+
+#### 1. Virtual Sub-accounts
+
+- Self-created, identified by payment content
+- Example: Content with "TKPG01" indicates sub-account "G01"
+
+#### 2. Official VA Sub-accounts
+
+- Registered with the bank
+- Customers can transfer using the sub-account number
+
+**Setup Process:**
+
+1. Go to bank account section
+2. Click "Add Virtual Account"
+3. Enter sub-account identifier and memorable name
+4. Generate QR code for customer payments
+
+### Bank Account Configuration
+
+**Key Configuration Options:**
+
+#### 1. Transaction Synchronization
+
+- Automatically update new bank transactions
+- Sync options:
+  - Money received
+  - Money sent
+  - Account balance
+
+#### 2. Transaction Filtering
+
+- Filter transactions by configured keywords
+- Exclude irrelevant transactions
+- Manage transactions more effectively
+
+#### 3. Data Management
+
+- Option to delete all synchronized transaction data
+- Deletion only affects SePay platform, not actual bank account
+
+**Configuration Access:**
+
+- Navigate to bank account details page
+- Access "Cấu hình chung" (General Configuration)
+
+**Supported Banks:**
+
+- Direct API: TPBank, VietinBank, ACB, MBBank
+- SMS connection: Available for all banks
+
+**Recommendation:** Review and customize bank account settings to match specific business needs.
+
+---
+
+## Company Configuration
+
+### Service Packages
+
+See [Service Packages](#service-packages) section above for detailed information.
+
+### Invoices & Payments
+
+**Accessing Invoices:**
+
+- Menu: "Công ty" → "Hóa đơn" section
+- View invoice list and status
+
+**Invoice Status:**
+
+- "Chưa thanh toán" (Unpaid): Shows QR code for payment
+- Select "Xem" (View) to see invoice details
+
+**Payment Process:**
+
+1. Open banking app
+2. Scan QR code
+3. SePay automatically recognizes payment within seconds
+
+**Important Timeline:**
+
+- Invoices created 7 days before service expiration
+- Payment required to maintain service
+- After 7 days past expiration: Service is locked
+- After 15 days: Data may be deleted
+
+**Additional Services:**
+
+- For VAT invoices, contact SePay support
+- If payment confirmed but status remains unpaid, contact support
+
+### General Configuration
+
+**Configuration Options:**
+
+#### 1. Sub-Accounts Settings
+
+- Enable or disable sub-accounts feature
+- When disabled, transaction lists won't show sub-account columns
+
+#### 2. Payment Code Structure
+
+Helps identify payment details in transaction descriptions:
+
+- **Prefix**: 2-5 letter characters (e.g., DH, VIN, ORDER)
+- **Suffix**: 1-10 characters (numbers or alphanumeric)
+
+#### 3. Data Storage Time
+
+Customizable retention periods:
+
+- Range: 1 hour to 3 years
+- Default: 6 months
+- Longer periods require additional purchase
+- Affects storage of transactions, chat logs, and webhook logs
+
+#### 4. Automatic Payment Code Recognition
+
+- Can be enabled or disabled
+- Useful for:
+  - WebHooks transaction verification
+  - Automatic order validation on e-commerce platforms
+
+**Access:** "Company" → "General Configuration"
+
+---
+
+## Notification Integrations
+
+### Telegram Integration
+
+**Purpose:**
+
+Enable SePay to send transaction notifications to Telegram groups, allowing team members to quickly capture transaction information.
+
+**Prerequisites:**
+
+- At least one bank account added to SePay
+
+**Integration Steps:**
+
+1. Access https://my.sepay.vn/notificationtelegram
+2. Get Telegram group ID
+3. Connect with SePay
+
+**Configuration Options:**
+
+- Select notification events:
+  - Incoming money
+  - Outgoing money
+  - Both
+- Configure conditions:
+  - By main account
+  - By sub-account
+  - By payment content
+- Customize Telegram message content
+
+**Verification:**
+
+1. Create a small bank transaction to test
+2. Check messages in Telegram group
+3. Verify in SePay transactions menu under "Automatic" column
+
+### Lark Messenger Integration
+
+**Purpose:**
+
+Send real-time transaction updates to Lark Messenger for team collaboration.
+
+**Requirements:**
+
+- Lark Desktop App (required for WebHook URL generation)
+
+**Integration Steps:**
+
+1. Download Lark Desktop App
+2. Create a Custom Bot in a Lark Messenger group
+3. Obtain WebHook URL from bot creation
+4. Configure integration in SePay:
+   - Select notification events (money in/out)
+   - Set optional filtering conditions
+   - Customize chat message content
+
+**Important Notes:**
+
+- WebHook URL can only be generated through Lark Desktop App
+- Customize which bank accounts trigger notifications
+- Real-time transaction updates
+
+### Viber Integration
+
+**Purpose:**
+
+Automatic bank transaction notifications sent directly to Viber Channel.
+
+**Requirements:**
+
+- Must be a "Super Admin" of Viber Channel
+- Recommended to disable "Allow all subscribers to share"
+
+**Integration Steps:**
+
+1. Access Viber integration menu in SePay
+2. Obtain Authentication Token from Viber Channel
+3. Connect SePay with Viber by entering the token
+4. Configure notification settings:
+   - Select bank accounts
+   - Set transaction filters
+   - Choose message templates
+
+**Configuration Options:**
+
+- Filter by transaction type (incoming/outgoing)
+- Set transaction amount thresholds
+- Customize message templates
+- Control webhook notification status
+
+**Verification:**
+
+1. Test by making a bank transfer
+2. Check transaction messages in Viber Channel
+3. Review sent messages in SePay transaction log
+
+### Mobile App
+
+**Platforms:**
+
+- iOS
+- Android
+
+**Key Features:**
+
+- Real-time transaction notifications directly to mobile devices
+- Share account balance updates with employees
+- Support sharing for specific virtual bank accounts
+
+**Setup Process:**
+
+1. Download app for iOS or Android
+2. Select bank account for notifications
+3. Choose a virtual account (VA)
+4. Configure account sharing options:
+   - Create a new account
+   - Use existing sub-accounts
+
+**Sharing Options:**
+
+- Employees can view transaction lists by default
+- Option to hide account balance in permissions
+- Can share with multiple employees
+- Ability to manage and revoke shared access
+
+**Verification:**
+
+- Test by creating a small bank transaction
+- Confirm app receives and displays notification
+
+### Payment Speaker Integration
+
+**Purpose:**
+
+Audio notifications when customers transfer funds, ideal for physical retail locations.
+
+**Two Methods:**
+
+#### 1. For New SePay Users (loa.sepay.vn)
+
+1. Register at loa.sepay.vn
+2. Click "Liên kết Loa ngay" (Link Speaker Immediately)
+3. Enter device information
+4. Verify with OTP
+5. Link bank account
+6. Scan QR code to test speaker functionality
+
+#### 2. For Existing SePay Users (my.sepay.vn)
+
+1. Access "Loa thanh toán" (Payment Speaker) section
+2. Add device
+3. Enter device details
+4. Verify with OTP
+5. Select/add bank account/VA to link
+6. Scan QR code to confirm speaker operation
+
+**Benefit:**
+
+Immediate audio notification when customers transfer funds.
+
+---
+
+## E-commerce & Web Integrations
+
+### Shopify Integration
+
+**Key Features:**
+
+- Automatic payment confirmation
+- QR code displayed during checkout
+- Instant payment status updates
+- Automatic order status changes
+- Confirmation emails sent automatically
+
+**Integration Steps:**
+
+1. Create a custom Shopify app to get API Token
+2. Set up integration at my.sepay.vn
+3. Add custom bank transfer payment method in Shopify
+
+**Configuration Requirements:**
+
+- API permissions for orders and script tags
+- Must include "chuyển khoản" or "VietQR" in payment method name
+- Supports custom transaction parameter configurations
+
+**Important Compatibility Warning:**
+
+- Shopify will stop supporting script additions after 10/02/2025
+- Existing integrations must update API permissions by 01/01/2025
+
+**Verification:**
+
+- Test order placement
+- Confirm QR code appears
+- Check automatic payment processing
+
+### Sapo Integration
+
+**Purpose:**
+
+Integrate SePay into Sapo to confirm payment immediately after customer transfer.
+
+**Integration Steps:**
+
+1. Create a custom Sapo app to get API Key and API Secret
+2. Set up integration at my.sepay.vn
+3. Add integration code to Sapo's checkout page
+4. Add new bank transfer payment method
+
+**Key Benefits:**
+
+- Automatic payment confirmation
+- QR code displayed during checkout
+- Order status automatically updates after successful payment
+- Real-time transaction verification
+- Seamless payment experience
+
+**Verification:**
+
+- Test by placing an order
+- Confirm QR code appears during checkout
+- Verify automatic order status update
+
+### Haravan Integration
+
+**Integration Steps:**
+
+1. Create a Private App in Haravan Admin
+   - Set permissions for Orders (Read and Write)
+   - Obtain API Token
+
+2. Configure SePay Integration at my.sepay.vn
+   - Add integration
+   - Select bank account
+   - Enter API Token
+
+3. Add Integration Code to Haravan
+   - Go to Haravan Admin → Configuration → Payments
+   - Paste SePay integration code in "Additional message content"
+
+4. Add Bank Transfer Payment Method
+   - Create method named "Chuyển khoản ngân hàng"
+   - Enable automatic transaction confirmation
+
+**Key Benefits:**
+
+- Automatic payment confirmation
+- QR code displayed during checkout
+- Instant order status updates
+- Email confirmation for customers
+
+**Important Note:**
+
+Ensure order number prefix matches between Haravan and SePay if modified.
+
+### GoHighLevel Integration
+
+**Purpose:**
+
+Automate payment confirmation via bank transfer for GoHighLevel websites.
+
+**Key Features:**
+
+- Automatically confirms payments after customer bank transfer
+- Adds bank transfer as payment option
+- Displays QR code with payment details
+- Automatically updates order status to "paid"
+
+**Integration Steps:**
+
+1. Access integration at my.sepay.vn/gohighlevel
+2. Click "Tích Hợp Ngay" (Integrate Now)
+3. Authenticate with GoHighLevel Sub-Account
+4. Select appropriate account
+5. Configure payment gateway settings
+6. Set SePay as "Default" payment method in GoHighLevel
+
+**Important Requirements:**
+
+- Only works with Sub-Account GoHighLevel accounts
+- Verification at marketplace.leadconnectorhq.com
+
+**Verification:**
+
+- Test with a test order
+- Check QR code appears during checkout
+- Confirm automatic transaction recognition
+
+### WooCommerce Integration
+
+**Key Features:**
+
+- Automatically confirms bank transfer payments
+- Converts order status from "On-Hold" to "Processing"
+- Provides QR code for bank transfers
+- Customizable payment gateway settings
+
+**Integration Steps:**
+
+1. Install SePay Gateway WordPress plugin
+2. Connect SePay account
+3. Configure bank account settings
+4. Customize payment gateway options
+
+**User Experience:**
+
+- Customers see bank transfer option with QR code
+- Instant payment confirmation
+- Automatic order status updates
+
+**Configuration Options:**
+
+- Enable/disable payment method
+- Customize payment title and description
+- Select bank account
+- Set payment code prefix
+- Choose order completion status
+- Configure download modes for digital products
+
+**Notable Version 1.1.0 Updates:**
+
+- Direct account connection
+- Automatic data synchronization
+- Webhook integration
+
+**Plugin Availability:**
+
+Available on WordPress.org
+
+**Verification:**
+
+- Place a small test order
+- Verify QR code generation
+- Confirm payment and order status update
+
+### Google Sheets Integration
+
+**Two Methods Available:**
+
+#### Method 1: Official OAuth2 Integration (Recommended)
+
+**Features:**
+
+- Simple and straightforward
+- Supports multiple bank selections
+- No WebHooks required
+- Automatically add default data columns
+
+**Steps:**
+
+1. Login and authorize Google account
+2. Create or select existing spreadsheet
+3. Configure bank transaction settings
+4. Auto-sync starts immediately
+
+#### Method 2: Manual App Script Integration (Not Recommended)
+
+**Features:**
+
+- More complex setup
+- Requires WebHooks
+- Limited bank selection
+- Involves Google Apps Script configuration
+
+**Configuration Options:**
+
+- Automatically sync bank transactions to Google Sheets
+- Option to auto-delete transactions after specified time
+- Configurable transaction type filtering
+- Ability to hide bank account balance
+
+**Additional Resources:**
+
+Video tutorial available on YouTube
+
+### HostBill Integration
+
+**Purpose:**
+
+Automatic payment confirmation and QR code support for HostBill billing system.
+
+**Integration Steps:**
+
+#### 1. Download and Install Module
+
+- Download SePay module ZIP file
+- Upload to `HostBill/public_html/includes/modules/Payment/`
+- Activate module in admin settings
+
+#### 2. Configure Payment Settings
+
+- Set module display name
+- Select supported banks
+- Configure bank account details
+- Set payment code prefix
+- Add API key for authentication
+
+#### 3. Create SePay Webhook
+
+- Set up webhook in SePay dashboard
+- Configure authentication
+- Select payment events
+- Specify callback URL
+
+#### 4. Optional Telegram Notifications
+
+- Configure Telegram integration
+- Set up notifications for failed transactions
+- Receive alerts in Telegram group chat
+
+**Benefits:**
+
+- Automatic payment confirmation
+- QR code payment support
+- Invoice status updates
+- Customizable payment options
+
+---
+
+## Programming & Integration
+
+### WebHooks Integration
+
+**Purpose:**
+
+Automatically send transaction information from SePay to your sales application when money comes in or goes out.
+
+**Setup Steps:**
+
+1. Access WebHooks menu
+2. Click "+ Add webhooks"
+3. Configure webhook details:
+   - Name the webhook
+   - Select event type (money in/out)
+   - Choose bank account conditions
+   - Specify webhook URL
+   - Set authentication method
+
+**Authentication Methods:**
+
+- OAuth 2.0
+- API Key
+- None (not recommended for production)
+
+**Webhook Data Payload Example:**
+
+```json
+{
+    "id": 92704,
+    "gateway": "Vietcombank",
+    "transactionDate": "2023-03-25 14:02:37",
+    "accountNumber": "0123499999",
+    "transferAmount": 2277000,
+    "transferType": "in",
+    "transferContent": "Customer payment reference",
+    "referenceCode": "REF12345",
+    "subAccount": "BRANCH01",
+    "accumulated": 15000000
+}
+```
+
+**Verification Requirements:**
+
+Successful webhooks must return:
+- JSON with `{"success": true}`
+- HTTP Status Code 200 or 201
+
+**Retry Mechanism:**
+
+- Maximum 7 retry attempts
+- Retry within 5 hours
+- Uses Fibonacci sequence for retry intervals
+
+**Best Practices:**
+
+- Implement duplicate transaction checking
+- Use transaction ID for unique identification
+- Verify webhook payload carefully
+- Implement proper error handling
+- Use authentication for security
+
+### WebHooks Programming
+
+**Sample Implementation (PHP + MySQL):**
+
+#### 1. Database Setup
+
+Create a database and table to store webhook transactions:
+
+```sql
+CREATE TABLE transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    transaction_id VARCHAR(50),
+    gateway VARCHAR(50),
+    transaction_date DATETIME,
+    account_number VARCHAR(50),
+    transfer_amount DECIMAL(15,2),
+    transfer_content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### 2. Sample Webhook Receiver (PHP)
+
+```php
+<?php
+// receiver.php
+header('Content-Type: application/json');
+
+// Database connection
+$conn = mysqli_connect("localhost", "username", "password", "database");
+
+// Get JSON payload
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
+
+// Extract transaction details
+$transactionId = $data['id'];
+$gateway = $data['gateway'];
+$transactionDate = $data['transactionDate'];
+$accountNumber = $data['accountNumber'];
+$transferAmount = $data['transferAmount'];
+$transferContent = $data['transferContent'];
+
+// Insert into database
+$sql = "INSERT INTO transactions (transaction_id, gateway, transaction_date,
+        account_number, transfer_amount, transfer_content)
+        VALUES ('$transactionId', '$gateway', '$transactionDate',
+        '$accountNumber', '$transferAmount', '$transferContent')";
+
+if (mysqli_query($conn, $sql)) {
+    echo json_encode(['success' => true]);
+} else {
+    echo json_encode(['success' => false, 'error' => mysqli_error($conn)]);
+}
+
+mysqli_close($conn);
+?>
+```
+
+#### 3. Security Considerations
+
+- Implement IP whitelisting
+- Use API Key verification
+- Validate incoming webhook payload
+- Use HTTPS for webhook URL
+- Implement rate limiting
+
+#### 4. Configuration in SePay
+
+- URL: `https://your-website.com/receiver.php`
+- Authentication: API Key (recommended)
+- Test with simulated transactions
+
+### Transaction Simulation
+
+**Purpose:**
+
+Test integrations without real bank transactions.
+
+**Availability:**
+
+- Only available for Demo accounts
+- Contact SePay to get a demo account
+
+**Features:**
+
+- Webhook and Telegram integrations remain active during simulation
+- Useful for testing WebHooks and Telegram integrations
+
+**Simulation Steps:**
+
+1. Access [Transactions] menu
+2. Click "+ Simulate Transaction" button
+3. Select bank, enter amount and transfer content
+4. Click "Add"
+
+**Use Cases:**
+
+- Testing webhook endpoints
+- Verifying Telegram notifications
+- Testing payment flows
+- Development and staging environments
+
+### Creating & Embedding QR Codes
+
+**Purpose:**
+
+Generate dynamic VietQR codes that customers can scan with their banking apps to automatically fill transfer details.
+
+**QR Code Generation Platform:**
+
+- URL: https://qr.sepay.vn
+
+**URL Structure:**
+
+```
+https://qr.sepay.vn/img?acc=ACCOUNT&bank=BANK&amount=AMOUNT&des=DESCRIPTION
+```
+
+**Parameters:**
+
+- `acc`: Account number (required)
+- `bank`: Bank name/code (required)
+- `amount`: Transfer amount (optional)
+- `des`: Transfer description (optional)
+
+**Embedding Methods:**
+
+Standard HTML img tag:
+
+```html
+<img src='https://qr.sepay.vn/img?acc=0123456789&bank=VCB&amount=100000&des=Order12345'
+     alt='Payment QR Code' />
+```
+
+**Example Scenarios:**
+
+**1. Full Details QR:**
+```
+https://qr.sepay.vn/img?acc=0123456789&bank=VCB&amount=500000&des=ORDER001
+```
+
+**2. Basic QR (Amount & Description filled by customer):**
+```
+https://qr.sepay.vn/img?acc=0123456789&bank=VCB
+```
+
+**Benefits:**
+
+- Reduces manual entry errors
+- Speeds up payment process
+- Improves customer experience
+- Works with all Vietnamese banking apps supporting VietQR
+
+### OAuth2 Implementation
+
+**Purpose:**
+
+Secure third-party application access to user resources without sharing login credentials.
+
+**Base URL:**
+
+```
+https://my.sepay.vn/api/v1
+```
+
+**Key Benefits:**
+
+- Enhanced security
+- Granular access control
+- Limited scope permissions
+- Refresh token mechanism
+- Revocable access
+
+**Authentication Flow:**
+
+1. **Register Application**
+   - Obtain `client_id` and `client_secret`
+
+2. **Request Authorization**
+   - Redirect user to authorization endpoint
+   - User grants permissions
+
+3. **Receive Authorization Code**
+   - Callback with authorization code
+
+4. **Exchange Code for Access Token**
+   - POST request with code, client_id, client_secret
+
+5. **Use Token for API Requests**
+   - Include token in Authorization header
+
+6. **Refresh Token When Expired**
+   - Exchange refresh token for new access token
+
+**Defined Scopes:**
+
+- `bank-account:read`: Read bank account information
+- `transaction:read`: Read transaction details
+- `webhook:read`: Read webhook configurations
+- `webhook:write`: Create/modify webhooks
+- `webhook:delete`: Delete webhooks
+- `profile`: Read user information
+- `company`: Read company information
+
+**Authentication Characteristics:**
+
+- Follows standard OAuth2 protocol (RFC 6749)
+- Allows controlled, limited resource access
+- Enables revoking access without changing passwords
+- Token expiration and refresh mechanism
+
+**Implementation Example:**
+
+**1. Authorization Request:**
+```
+GET https://my.sepay.vn/api/v1/oauth/authorize
+  ?response_type=code
+  &client_id=YOUR_CLIENT_ID
+  &redirect_uri=YOUR_REDIRECT_URI
+  &scope=transaction:read bank-account:read
+```
+
+**2. Token Exchange:**
+```
+POST https://my.sepay.vn/api/v1/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&code=AUTHORIZATION_CODE
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET
+&redirect_uri=YOUR_REDIRECT_URI
+```
+
+**3. Using Access Token:**
+```
+GET https://my.sepay.vn/userapi/transactions/list
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+---
+
+## API Documentation
+
+### API Introduction
+
+**Purpose:**
+
+SePay API allows developers to proactively query information, useful for reconciliation, retrieving bank transaction details, and transaction lists.
+
+**Base URL:**
+
+```
+https://my.sepay.vn/userapi
+```
+
+**API Access Requirements:**
+
+- Must create an API Token first
+- Include token in request headers
+
+**Two Main Interaction Methods:**
+
+1. **API Calls to SePay** (User-initiated)
+   - Pull data from SePay
+   - Query transactions, accounts, etc.
+
+2. **Webhooks** (SePay-initiated)
+   - Push data to your application
+   - Real-time notifications
+
+**Rate Limits:**
+
+- **Maximum: 2 calls per second**
+- If exceeded: Returns HTTP 429 (Too Many Requests)
+- Response includes `Retry-After` header indicating wait time
+
+**Additional Services:**
+
+For complex bank connection needs, SePay recommends "SePay Bank Hub"
+
+### Creating API Tokens
+
+**Steps to Create API Token:**
+
+1. Go to "Company Configuration" → "API Access"
+2. Click "+ Add API" button
+3. Fill in details:
+   - **Name**: Choose any descriptive name
+   - **Status**: Select "Active"
+4. Click "Thêm" (Add)
+
+**After Creation:**
+
+- API Token appears in API Access list
+- Copy and securely store the token
+
+**Important Notes:**
+
+- Currently, SePay does not support granular API permissions
+- All API tokens have full access to your account data
+- Treat API tokens like passwords
+
+**Using API Token:**
+
+Include token in all API requests:
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json
+```
+
+**Example Request:**
+
+```bash
+curl -X GET "https://my.sepay.vn/userapi/transactions/list" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json"
+```
+
+### Transaction API
+
+#### 1. Get Transaction Details
+
+**Endpoint:**
+
+```
+GET https://my.sepay.vn/userapi/transactions/details/{transaction_id}
+```
+
+**Description:**
+
+Retrieve full details of a specific transaction by ID.
+
+**Headers:**
+
+```
+Authorization: Bearer YOUR_API_TOKEN
+Content-Type: application/json
+```
+
+**Example Request:**
+
+```bash
+curl -X GET "https://my.sepay.vn/userapi/transactions/details/48673" \
+  -H "Authorization: Bearer YOUR_API_TOKEN"
+```
+
+**Example Response:**
+
+```json
+{
+    "transaction": {
+        "id": "48673",
+        "transaction_date": "2023-05-04 11:59:47",
+        "account_number": "0071000888888",
+        "amount_in": "19689000.00",
+        "amount_out": "0.00",
+        "accumulated": "25000000.00",
+        "transaction_content": "TRAN THIEN THAO chuyen tien",
+        "reference_code": "FT23125ABC123",
+        "bank_brand_name": "Vietcombank",
+        "gateway": "VCB",
+        "sub_account": "",
+        "bank_account_id": "1234"
+    }
+}
+```
+
+#### 2. List Transactions
+
+**Endpoint:**
+
+```
+GET https://my.sepay.vn/userapi/transactions/list
+```
+
+**Description:**
+
+Retrieve a list of transactions with optional filtering.
+
+**Query Parameters:**
+
+- `account_number` (string): Filter by bank account number
+- `transaction_date_min` (datetime): Start date (format: YYYY-MM-DD HH:MM:SS)
+- `transaction_date_max` (datetime): End date (format: YYYY-MM-DD HH:MM:SS)
+- `since_id` (integer): Get transactions after this ID
+- `limit` (integer): Number of results (max 5000, default 5000)
+- `reference_number` (string): Filter by reference code
+- `amount_in` (decimal): Filter by incoming amount
+- `amount_out` (decimal): Filter by outgoing amount
+
+**Example Request:**
+
+```bash
+curl -X GET "https://my.sepay.vn/userapi/transactions/list?limit=100&account_number=0071000888888" \
+  -H "Authorization: Bearer YOUR_API_TOKEN"
+```
+
+**Example Response:**
+
+```json
+{
+    "transactions": [
+        {
+            "id": "48673",
+            "transaction_date": "2023-05-04 11:59:47",
+            "account_number": "0071000888888",
+            "amount_in": "19689000.00",
+            "amount_out": "0.00",
+            "accumulated": "25000000.00",
+            "transaction_content": "Payment for Order #12345"
+        },
+        {
+            "id": "48672",
+            "transaction_date": "2023-05-04 10:30:15",
+            "account_number": "0071000888888",
+            "amount_in": "500000.00",
+            "amount_out": "0.00",
+            "accumulated": "5311000.00",
+            "transaction_content": "NGUYEN VAN A chuyen khoan"
+        }
+    ]
+}
+```
+
+#### 3. Count Transactions
+
+**Endpoint:**
+
+```
+GET https://my.sepay.vn/userapi/transactions/count
+```
+
+**Description:**
+
+Get total count of transactions matching filter criteria.
+
+**Query Parameters:**
+
+- `account_number` (string): Filter by bank account number
+- `transaction_date_min` (datetime): Start date
+- `transaction_date_max` (datetime): End date
+- `since_id` (integer): Count transactions after this ID
+
+**Example Request:**
+
+```bash
+curl -X GET "https://my.sepay.vn/userapi/transactions/count?account_number=0071000888888" \
+  -H "Authorization: Bearer YOUR_API_TOKEN"
+```
+
+**Example Response:**
+
+```json
+{
+    "count": 1547
+}
+```
+
+### Bank Account API
+
+#### 1. Get Bank Account Details
+
+**Endpoint:**
+
+```
+GET https://my.sepay.vn/userapi/bankaccounts/details/{bank_account_id}
+```
+
+**Description:**
+
+Retrieve detailed information about a specific bank account.
+
+**Example Request:**
+
+```bash
+curl -X GET "https://my.sepay.vn/userapi/bankaccounts/details/1234" \
+  -H "Authorization: Bearer YOUR_API_TOKEN"
+```
+
+**Example Response:**
+
+```json
+{
+    "bank_account": {
+        "id": "1234",
+        "account_holder_name": "NGUYEN VAN A",
+        "account_number": "0071000888888",
+        "accumulated": "25000000.00",
+        "last_transaction": "2023-05-04 11:59:47",
+        "bank_short_name": "Vietcombank",
+        "bank_full_name": "Ngan hang TMCP Ngoai thuong Viet Nam",
+        "bank_bin": "970436",
+        "bank_code": "VCB",
+        "status": "active"
+    }
+}
+```
+
+#### 2. List Bank Accounts
+
+**Endpoint:**
+
+```
+GET https://my.sepay.vn/userapi/bankaccounts/list
+```
+
+**Description:**
+
+Retrieve a list of all connected bank accounts.
+
+**Query Parameters:**
+
+- `short_name` (string): Filter by bank name
+- `last_transaction_date_min` (datetime): Filter by last transaction date
+- `last_transaction_date_max` (datetime): Filter by last transaction date
+- `since_id` (integer): Get accounts after this ID
+- `limit` (integer): Number of results
+- `accumulated_min` (decimal): Filter by minimum balance
+- `accumulated_max` (decimal): Filter by maximum balance
+
+**Example Request:**
+
+```bash
+curl -X GET "https://my.sepay.vn/userapi/bankaccounts/list?limit=50" \
+  -H "Authorization: Bearer YOUR_API_TOKEN"
+```
+
+**Example Response:**
+
+```json
+{
+    "bank_accounts": [
+        {
+            "id": "1234",
+            "account_holder_name": "NGUYEN VAN A",
+            "account_number": "0071000888888",
+            "accumulated": "25000000.00",
+            "bank_short_name": "Vietcombank"
+        },
+        {
+            "id": "1235",
+            "account_holder_name": "NGUYEN VAN A",
+            "account_number": "0123456789",
+            "accumulated": "15000000.00",
+            "bank_short_name": "VietinBank"
+        }
+    ]
+}
+```
+
+#### 3. Count Bank Accounts
+
+**Endpoint:**
+
+```
+GET https://my.sepay.vn/userapi/bankaccounts/count
+```
+
+**Description:**
+
+Get total count of connected bank accounts.
+
+**Query Parameters:**
+
+Similar to list endpoint for filtering.
+
+**Example Response:**
+
+```json
+{
+    "count": 5
+}
+```
+
+### Virtual Account (VA) API for Orders
+
+**Purpose:**
+
+Automatically generate unique Virtual Account numbers for each order, ensuring precise payment matching.
+
+**Key Features:**
+
+- **Absolute Payment Precision**: Exact amount matching required
+- **Independent VA per Order**: Each order gets unique VA number
+- **Prevents Duplicate Payments**: Unique identification
+- **Webhook-based Confirmation**: Real-time payment updates
+- **Automatic Order Status Updates**: Seamless integration
+
+**Currently Supported Bank:**
+
+- **BIDV** (for business accounts)
+
+**Workflow:**
+
+1. **Create Order via API**
+   - Send order details
+   - Receive unique VA number
+
+2. **Display Payment Details**
+   - Show VA number to customer
+   - Display exact payment amount
+   - Optionally show QR code
+
+3. **Customer Makes Payment**
+   - Transfer to unique VA number
+   - Must match exact amount
+
+4. **Bank Sends Confirmation**
+   - Bank notifies SePay of payment
+
+5. **SePay Forwards via Webhook**
+   - Your system receives payment confirmation
+   - Includes order details and transaction info
+
+6. **System Updates Order Status**
+   - Mark order as paid
+   - Trigger fulfillment process
+
+**Integration Method:**
+
+RESTful API integration with webhook callbacks.
+
+**Note:**
+
+For detailed API endpoints, parameters, and request/response examples, refer to specific VA API documentation or contact SePay support for business account setup.
+
+**Benefits:**
+
+- No payment confusion between orders
+- Automatic reconciliation
+- Reduced manual verification
+- Improved customer experience
+- Scalable for high-volume businesses
+
+---
+
+## Support & Contact
+
+### Support Channels
+
+**Facebook Messenger:**
+- https://www.facebook.com/messages/t/sepay.vn
+- Direct link: https://m.me/117903214582465
+
+**Phone Hotline:**
+- **02873059589**
+
+**YouTube Channel:**
+- https://www.youtube.com/@SePayVN
+- Video tutorials and guides
+
+**Telegram:**
+- https://t.me/s/sepaychannel
+- Updates and announcements
+
+**Email Support:**
+
+Contact through the website contact form at https://sepay.vn/lien-he.html
+
+### Documentation Website
+
+- Main Documentation: https://docs.sepay.vn/
+- Main Platform: https://my.sepay.vn/
+- QR Generator: https://qr.sepay.vn/
+- Payment Speaker: https://loa.sepay.vn/
+
+### Business Hours
+
+Contact SePay support during business hours for:
+- VAT invoices
+- Demo account requests
+- Technical integration assistance
+- Custom implementation support
+- Enterprise solutions
+
+---
+
+## Quick Reference
+
+### Common URLs
+
+| Service | URL |
+|---------|-----|
+| Main Platform | https://my.sepay.vn/ |
+| Registration | https://my.sepay.vn/register |
+| Documentation | https://docs.sepay.vn/ |
+| QR Code Generator | https://qr.sepay.vn/ |
+| Payment Speaker | https://loa.sepay.vn/ |
+| API Base URL | https://my.sepay.vn/userapi |
+| OAuth Base URL | https://my.sepay.vn/api/v1 |
+
+### Supported Banks (API Connection)
+
+- VPBank
+- BIDV (including VA for business)
+- TPBank
+- ACB
+- MBBank
+- VietinBank
+- Others (via SMS)
+
+### Rate Limits
+
+- API Calls: 2 requests per second
+- Webhook Retries: Maximum 7 attempts over 5 hours
+
+### Key Concepts
+
+- **Transaction**: Bank transfer (incoming or outgoing)
+- **Sub-Account (VA)**: Virtual account linked to main account
+- **Payment Code**: Unique identifier in transaction content
+- **Webhook**: Real-time push notification to your server
+- **API**: Pull data from SePay on demand
+- **OAuth2**: Secure third-party authorization
+- **VietQR**: Vietnamese QR code standard for bank transfers
+
+---
+
+## Changelog
+
+**Last Updated:** 2025-10-15
+
+**Documentation Version:** 1.0
+
+This documentation is compiled from the official SePay documentation website (https://docs.sepay.vn/) to provide a comprehensive reference for large language models and developers.
+
+For the most up-to-date information, always refer to the official documentation at https://docs.sepay.vn/
+
+---
+
+**End of Documentation**
